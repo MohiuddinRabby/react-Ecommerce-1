@@ -5,12 +5,10 @@ import Shop from "./components/Shop/Shop";
 import Review from "./components/Review/Review";
 import Inventory from "./components/Inventory/Inventory";
 import Notfound from "./components/Notfound/Notfound";
-import Product from "./components/Product/Product";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 function App() {
