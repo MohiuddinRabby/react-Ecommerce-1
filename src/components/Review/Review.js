@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import fakeData from '../../fakeData';
 import ReviewItem from '../ReviewItem/ReviewItem';
+import Cart from '../Cart/Cart';
 
 const Review = () => {
     const [cart,setCart ]= useState([]);
+    //handle place order
+    const handlePlaceOrder = () =>{
+        setCart([]);
+        processOrder();
+    }
     const handleRemoveITem = (productKey)=>{
-        console.log('remove click',productKey);
-        const newCart = cart.filter(pd=>pd.key!=productKey);
+        const newCart = cart.filter(pd=>pd.key!==productKey);
         setCart(newCart);
         removeFromDatabaseCart(productKey);
     }
@@ -23,8 +28,8 @@ const Review = () => {
         setCart(cartProducts);
     },[])
     return (
-        <div>
-            <h1>order quantity: {cart.length}</h1>
+       <div className="shop-container">
+            <div className="product-container">
             {
                 cart.map(pd=> <ReviewItem
                     key = {pd.key}
@@ -32,6 +37,12 @@ const Review = () => {
                     product={pd}></ReviewItem>)
             }
         </div>
+        <div className="cart-container">
+            <Cart cart={cart}>
+                <button onClick={handlePlaceOrder}>Place Order</button>
+            </Cart>
+        </div>
+       </div>
     );
 };
 

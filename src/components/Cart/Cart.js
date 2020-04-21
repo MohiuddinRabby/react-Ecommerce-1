@@ -1,13 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Cart = (props) => {
   const carts = props.cart;
 
   //process1 to calculate total price
   const total = carts.reduce(
-    (totalPrice, product) => totalPrice + product.price,
-    0
+    (totalPrice, product) => totalPrice + product.price * product.quantity,0
   );
   //reduce(param1,param2) takes array elements and provides a single element
 
@@ -40,7 +38,9 @@ return Number(precision);
       <h4>shippingCost: ${shippingCost}</h4>
       <h3>Total Price: ${formatNumber(grandToal)}</h3>
       <p><small>*Tax:{formatNumber(tax)}</small></p>
-      <Link to="/review"><button>Review Order</button></Link>
+      {
+        props.children
+      }
     </div>
   );
 };
