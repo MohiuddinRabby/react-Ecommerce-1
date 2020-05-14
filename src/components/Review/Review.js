@@ -3,6 +3,7 @@ import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../uti
 import fakeData from '../../fakeData';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
+import { Link } from 'react-router-dom';
 
 const Review = () => {
     const [cart,setCart ]= useState([]);
@@ -39,7 +40,7 @@ const Review = () => {
         </div>
         <div className="cart-container">
             <Cart cart={cart}>
-                <button onClick={handlePlaceOrder}>Place Order</button>
+                <Link to="/shipment"><button >Proceed checkout</button></Link>
             </Cart>
         </div>
        </div>

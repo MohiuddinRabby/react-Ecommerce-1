@@ -1,8 +1,10 @@
 import React from "react";
+import { useAuth } from "../Login/user-auth";
 
 const Cart = (props) => {
   const carts = props.cart;
-
+  const auth = useAuth();
+  console.log(auth.user)
   //process1 to calculate total price
   const total = carts.reduce(
     (totalPrice, product) => totalPrice + product.price * product.quantity,0

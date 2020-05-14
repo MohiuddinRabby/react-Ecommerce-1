@@ -8,10 +8,13 @@ import Notfound from "./components/Notfound/Notfound";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Login from "./components/Login/Login";
+import { AuthContexProvider, PrivateRoute } from "./components/Login/user-auth";
+import Shipment from "./components/Shipment/Shipment";
 
 function App() {
   return (
     <div>
+      <AuthContexProvider>
         <Header></Header>
         <Router>
           <Switch>
@@ -33,11 +36,15 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
-            <Route>
+            <PrivateRoute path="/shipment">
+              <Shipment></Shipment>
+            </PrivateRoute>
+            <Route path="*">
               <Notfound></Notfound>
             </Route>
           </Switch>
         </Router>
+      </AuthContexProvider>
     </div>
   );
 }

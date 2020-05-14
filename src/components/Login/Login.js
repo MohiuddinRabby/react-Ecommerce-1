@@ -3,7 +3,6 @@ import Auth from './user-auth';
 
 const Login = () => {
     const auth = Auth();
-    console.log(auth.user)
     return (
         <div>
             <h1>Login page</h1>
