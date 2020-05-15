@@ -1,17 +1,30 @@
-import React from 'react';
-import Auth from './user-auth';
+import React from "react";
+import Auth from "./user-auth";
 
 const Login = () => {
-    const auth = Auth();
-    return (
-        <div>
-            <h1>Login page</h1>
-           {
-               auth.user ? <button onClick={auth.signOut}>SignOut</button> :
-               <button onClick={auth.signInWithGoogle}>SignIn with Google</button>
-            }
-        </div>
-    );
+  const auth = Auth();
+  const handleSignIn = () => {
+    auth.signInWithGoogle()
+    .then(res=>{
+        window.location.pathname = "/review";
+    })
+  };
+  const handleSignOut = () =>{
+      auth.signOut()
+      .then(res=>{
+          window.location.pathname="/"
+      })
+  }
+  return (
+    <div>
+      <h1>Login page</h1>
+      {auth.user ? (
+        <button onClick={handleSignOut}>SignOut</button>
+      ) : (
+        <button onClick={handleSignIn}>SignIn with Google</button>
+      )}
+    </div>
+  );
 };
 
 export default Login;

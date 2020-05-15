@@ -4,9 +4,11 @@ import fakeData from '../../fakeData';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/user-auth';
 
 const Review = () => {
     const [cart,setCart ]= useState([]);
+    const auth = useAuth();
     //handle place order
     const handlePlaceOrder = () =>{
         setCart([]);
@@ -37,10 +39,19 @@ const Review = () => {
                     removeProduct = {handleRemoveITem}
                     product={pd}></ReviewItem>)
             }
+            {
+                !cart.length&& <h2>You have no Item in Cart! <a href="/shop">Go to Shop</a></h2>
+            }
         </div>
         <div className="cart-container">
             <Cart cart={cart}>
-                <Link to="/shipment"><button >Proceed checkout</button></Link>
+                <Link to="/shipment">
+                    {
+                        auth.user?
+                        <button >Proceed checkout</button>:
+                        <button>Process Login</button>
+                    }
+                    </Link>
             </Cart>
         </div>
        </div>

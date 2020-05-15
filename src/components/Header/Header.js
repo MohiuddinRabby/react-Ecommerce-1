@@ -13,9 +13,11 @@ const Header = () => {
         <a href="/shop">Shop</a>
         <a href="/review">Review</a>
         <a href="/inventory">Inventory</a>
-        { auth.user?
-        <span style={{color:'red'}}>{auth.user.name}</span>:
-          <a href="/login">SignIn</a>
+        { auth.user&&
+        <span style={{color:'red'}}>{auth.user.name}</span>
+        }
+        {auth.user?<a href="/login">sign Out</a>
+          :<a href="/login">SignIn</a>
         }
       </nav>
     </div>

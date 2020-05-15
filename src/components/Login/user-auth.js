@@ -46,7 +46,7 @@ const Auth = () => {
   const [user, setUser] = useState(null);
   const provider = new firebase.auth.GoogleAuthProvider();
   const signInWithGoogle = () => {
-    firebase
+    return firebase
       .auth()
       .signInWithPopup(provider)
       .then((res) => {
@@ -61,14 +61,16 @@ const Auth = () => {
       });
   };
   const signOut = () => {
-    firebase
+   return  firebase
       .auth()
       .signOut()
       .then((res) => {
         setUser(null);
+        return true
       })
       .catch((err) => {
         console.log(err);
+        return false;
       });
   };
   useEffect(() => {
