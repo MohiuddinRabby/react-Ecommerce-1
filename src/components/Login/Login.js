@@ -17,7 +17,7 @@ const Login = () => {
   }
   return (
     <div>
-      <h1>Login page</h1>
+      <h1>SingIn  SignOut page</h1>
       {auth.user ? (
         <button onClick={handleSignOut}>SignOut</button>
       ) : (
