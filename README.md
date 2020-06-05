@@ -8,4 +8,4 @@ open any cmd
 run'npm install'
 ```
 #### Project Image
-<img src="../src/demoImg/1.PNG" width:"400px">
+<img src="/demoImg/1.PNG" width:"400px">
