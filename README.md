@@ -5,5 +5,4 @@ To use project locally :
 3.run 'npm install'
 
 
-Images of Project
-<img src="/src/demoImg/Screenshot (4).png">
+
