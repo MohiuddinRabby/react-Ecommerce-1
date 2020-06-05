@@ -1,6 +1,6 @@
 get Demo@ https://ema-jon-ecom.web.app
 
-#To use the locally follow steps:
+##<h2>To use the locally follow steps:
 
 ```
   clone or download
