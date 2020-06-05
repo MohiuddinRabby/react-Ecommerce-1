@@ -1,5 +1,7 @@
 get Demo@ https://ema-jon-ecom.web.app
-##To use the locally follow steps:
+
+#To use the locally follow steps:
+
 ```
   clone or download
   open any cmd
