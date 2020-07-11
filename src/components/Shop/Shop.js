@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import fakeData from "../../fakeData";
 import "./Shop.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
@@ -7,27 +6,36 @@ import { addToDatabaseCart, getDatabaseCart } from "../../utilities/databaseMana
 import { Link } from "react-router-dom";
 
 const Shop = () => {
-  const firstTen = fakeData.slice(0, 10);
-  const [products, setProducts] = useState(firstTen);
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
+    fetch('http://localhost:3005/products')
+      // node-mongo-2 local server - provides data from mongoDB
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+      })
+  }, [])
+  useEffect(() => {
     //cart
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    const cartProducts =  productKeys.map(key=>{
-        const product = fakeData.find(pd=>pd.key===key);
+    if (products.length) {
+      const cartProducts = productKeys.map(key => {
+        const product = products.find(pd => pd.key === key);
         product.quantity = savedCart[key];
         return product;
-    });
-    setCart(cartProducts);
-},[])
+      });
+      setCart(cartProducts);
+    }
+  }, [products])
   const handleProduct = (product) => {
     const toBeAddedKey = product.key;
-    const sameProduct = cart.find(pd=>pd.key===toBeAddedKey);
+    const sameProduct = cart.find(pd => pd.key === toBeAddedKey);
     let count = 1;
     let newCart;
     if (sameProduct) {
-     count = sameProduct.quantity + 1;
+      count = sameProduct.quantity + 1;
       sameProduct.quantity = count;
       const others = cart.filter((pd) => pd.key !== toBeAddedKey);
       newCart = [...others, sameProduct];
