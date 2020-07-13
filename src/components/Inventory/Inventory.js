@@ -3,22 +3,7 @@ import fakeData from '../../fakeData';
 
 const Inventory = () => {
     const handleAddInventory = () => {
-        const product = fakeData[0]
-        console.log('before post', fakeData[0])
-        fetch('http://localhost:3005/addProduct', {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify(fakeData) // body data type must match "Content-Type" header
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('post success', data)
-            })
-
-
+        alert('invertory coming.....')
     }
     return (
         <div>
