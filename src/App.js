@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import "./App.css";
 import Header from "./components/Header/Header";
 import Shop from "./components/Shop/Shop";
 import Review from "./components/Review/Review";
