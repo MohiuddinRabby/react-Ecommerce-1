@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import { Link } from 'react-router-dom';
@@ -9,10 +9,6 @@ const Review = () => {
     const [cart, setCart] = useState([]);
     const auth = useAuth();
     //handle place order
-    const handlePlaceOrder = () => {
-        setCart([]);
-        processOrder();
-    }
     const handleRemoveITem = (productKey) => {
         const newCart = cart.filter(pd => pd.key !== productKey);
         setCart(newCart);

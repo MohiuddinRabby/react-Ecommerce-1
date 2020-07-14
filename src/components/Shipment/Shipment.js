@@ -1,14 +1,34 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from '../Login/user-auth';
-import  './Shipment.css';
+import './Shipment.css';
+import { getDatabaseCart, processOrder } from "../../utilities/databaseManager";
 const Shipment = () => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    //todo- after payment need to added
+    console.log(auth.user.email)
+    const savedCart = getDatabaseCart()
+    const orderDetail = {email:auth.user.email,cart:savedCart}
+    fetch('',{
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(orderDetail) // body data type must match "Content-Type" header
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    console.log('order placed')
+    alert('order placed sucess')
+    processOrder()
+  })
+  }
   const auth = useAuth();
   return (
     <form className="shipment-form" onSubmit={handleSubmit(onSubmit)}>
-      <input name="name" defaultValue={auth.user.name}  ref={register({ required: true })} placeholder="Name" />
+      <input name="name" defaultValue={auth.user.name} ref={register({ required: true })} placeholder="Name" />
       {errors.name && <span className="error">Name is required</span>}
       <input name="Email" defaultValue={auth.user.email} ref={register({ required: true })} placeholder="Email" />
       {errors.Email && <span className="error">Email is required</span>}
