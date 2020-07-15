@@ -5,7 +5,6 @@ import { useAuth } from "../Login/user-auth";
 
 const Header = () => {
   const auth = useAuth();
-  console.log(auth.user)
   return (
     <div className="header">
       <img src={logo} alt="" />
