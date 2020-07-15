@@ -56,7 +56,6 @@ const Auth = () => {
       })
       .catch((err) => {
         setUser(null);
-        console.log(err);
         return err.message;
       });
   };
@@ -69,7 +68,6 @@ const Auth = () => {
         return true
       })
       .catch((err) => {
-        console.log(err);
         return false;
       });
   };
@@ -79,7 +77,6 @@ const Auth = () => {
         // User is signed in.
         const currentUser = getUser(user);
         setUser(currentUser);
-        console.log(currentUser);
       } else {
         // No user is signed in.
       }
