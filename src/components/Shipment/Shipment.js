@@ -10,7 +10,7 @@ const Shipment = () => {
     console.log(auth.user.email)
     const savedCart = getDatabaseCart()
     const orderDetail = {email:auth.user.email,cart:savedCart}
-    fetch('',{
+    fetch('http://localhost:3005/placeOrder',{
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
           'Content-Type': 'application/json'
@@ -20,8 +20,8 @@ const Shipment = () => {
   })
   .then(res=>res.json())
   .then(data=>{
-    console.log('order placed')
-    alert('order placed sucess')
+    console.log('order placed',data)
+    alert('order succesfully placed')
     processOrder()
   })
   }
