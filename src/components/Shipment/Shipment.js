@@ -14,7 +14,7 @@ const Shipment = () => {
     console.log(auth.user.email)
     const savedCart = getDatabaseCart()
     const orderDetail = { email: auth.user.email, cart: savedCart, shipment: data }
-    fetch('http://localhost:3005/placeOrder', {
+    fetch('https://mighty-earth-81475.herokuapp.com/placeOrder', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json'

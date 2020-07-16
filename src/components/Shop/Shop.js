@@ -9,7 +9,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3005/products')
+    fetch('https://mighty-earth-81475.herokuapp.com/products')
       // node-mongo-2 local server - provides data from mongoDB
       .then(res => res.json())
       .then(data => {

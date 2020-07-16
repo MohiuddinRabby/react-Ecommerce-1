@@ -18,7 +18,7 @@ const Review = () => {
         //cart
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-        fetch('http://localhost:3005/getProductsByKey', {
+        fetch('https://mighty-earth-81475.herokuapp.com/getProductsByKey', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json'

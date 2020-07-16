@@ -7,7 +7,7 @@ const ProductDetails = () => {
     const { productKey } = useParams();
     const [product, setProduct] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:3005/product/' + productKey)
+        fetch('https://mighty-earth-81475.herokuapp.com/product/' + productKey)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
