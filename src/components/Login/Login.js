@@ -16,12 +16,12 @@ const Login = () => {
       })
   }
   return (
-    <div>
+    <div className="container">
       <h1>SingIn  SignOut page</h1>
       {auth.user ? (
-        <button onClick={handleSignOut}>SignOut</button>
+        <button className="btn btn-danger"  onClick={handleSignOut}>SignOut</button>
       ) : (
-        <button onClick={handleSignIn}>SignIn with Google</button>
+        <button className="btn btn-primary" onClick={handleSignIn}>SignIn with Google</button>
       )}
     </div>
   );

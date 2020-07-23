@@ -37,8 +37,9 @@ const Review = () => {
             })
     }, [])
     return (
-        <div className="shop-container">
-            <div className="product-container">
+        <div className="container">
+            <div className="row">
+            <div className="col-md-9">
                 {
                     cart.map(pd => <ReviewItem
                         key={pd.key}
@@ -49,16 +50,17 @@ const Review = () => {
                     !cart.length && <h2>You have no Item in Cart! <a href="/shop">Go to Shop</a></h2>
                 }
             </div>
-            <div className="cart-container">
+            <div className="col-md-3">
                 <Cart cart={cart}>
                     <Link to="/shipment">
                         {
                             auth.user ?
-                                <button >Proceed checkout</button> :
-                                <button>Process Login</button>
+                                <button className="btn btn-secondary">Proceed checkout</button> :
+                                <button className="btn btn-secondary">Process Login</button>
                         }
                     </Link>
                 </Cart>
+            </div>
             </div>
         </div>
     );

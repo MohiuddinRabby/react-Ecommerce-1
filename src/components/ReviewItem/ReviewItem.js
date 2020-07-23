@@ -3,11 +3,12 @@ import React from 'react';
 const ReviewItem = (props) => {
     const {name,quantity,key,price} = props.product;
     return (
-        <div className="product-review">
-            <h3 className="product-name">{name}</h3>
-            <h4>Price: $ {price}</h4>
+        <div className="">
+            <h5 className="">{name}</h5>
+            <h6>Price: $ {price}</h6>
             <p>Quantity: {quantity}</p>
-            <button onClick= {()=>props.removeProduct(key)}>Remove Item</button>
+            <button className="btn btn-secondary" onClick= {()=>props.removeProduct(key)}>Remove Item</button>
+            <hr/>
         </div>
     );
 };

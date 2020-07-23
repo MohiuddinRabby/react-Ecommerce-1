@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Shop.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
 import { addToDatabaseCart, getDatabaseCart } from "../../utilities/databaseManager";
@@ -49,8 +48,9 @@ const Shop = () => {
   };
 
   return (
-    <div className="shop-container">
-      <div className="product-container">
+    <div className="container-fluid">
+     <div className="row">
+     <div className="col-md-9">
         {products.map((product) => (
           <Product
             key={product.key}
@@ -60,9 +60,10 @@ const Shop = () => {
           ></Product>
         ))}
       </div>
-      <div className="cart-container">
-        <Cart cart={cart}><Link to="/review"><button>Review Order</button></Link></Cart>
+      <div className="col-md-3">
+        <Cart cart={cart}><Link to="/review"><button className="btn btn-secondary">Review Order</button></Link></Cart>
       </div>
+     </div>
     </div>
   );
 };
