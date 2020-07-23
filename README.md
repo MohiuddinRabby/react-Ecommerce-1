@@ -2,11 +2,14 @@
 
 #### To use the locally follow steps:
   
-```
-clone or download 
-open any cmd
-run'npm install'
-```
+>clone or download 
+
+>open any cmd
+
+>run'npm install'
+
+>run 'npm start'
+
 #### Project Image
 
 #### 1
